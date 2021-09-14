@@ -1,25 +1,27 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
-  "icons": [
-    {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
-    },
-    {
-      "src": "logo192.png",
-      "type": "image/png",
-      "sizes": "192x192"
-    },
-    {
-      "src": "logo512.png",
-      "type": "image/png",
-      "sizes": "512x512"
-    }
+  "manifest_version": 2,
+  "name": "BITS and Pieces",
+  "version": "1.0",
+
+  "description": "A pop-up which contains quick links to all frequently accessed University websites and logs into them automatically.",
+  "icons": {
+    "48": "icons/bp-48.png"
+  },
+  "permissions": [
+	  "https://academic.bits-pilani.ac.in/*",
+	  "https://nalanda-aws.bits-pilani.ac.in/*",
+	  "https://timetable.bits-dvm.org/renderer.html",
+	  "activeTab",
+	  "tabHide",
+	  "tabs",
+	  "webNavigation",
+	  "webRequest"
   ],
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+
+
+  "browser_action": {
+    "default_icon": "icons/bp-32.png",
+    "default_title": "BITS and Pieces",
+    "default_popup": "index.html"
+  }
 }
