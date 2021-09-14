@@ -29,6 +29,8 @@ const getLink = name => {
 			return 'https://epcbits.com/';
 		case 'EC':
 			return 'https://bitselections.wordpress.com/';
+		case 'Time Table Generator':
+			return 'https://timetable.bits-dvm.org/pilani.html';
 	}
 };
 
@@ -38,6 +40,8 @@ const getScript = name => {
 			return 'augsd';
 		case 'Nalanda AWS':
 			return 'nalanda';
+		case 'Time Table Generator':
+			return 'ttgen';
 	}
 };
 
@@ -117,6 +121,7 @@ const App = () => (
 					<LinkButton>SAC</LinkButton>
 					<LinkButton>EPC</LinkButton>
 					<LinkButton>EC</LinkButton>
+					<LinkButton>Time Table Generator</LinkButton>
 				</ButtonGroup>
 			</Row>
 		</Container>

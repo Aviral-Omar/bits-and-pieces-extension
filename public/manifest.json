@@ -12,11 +12,13 @@
 	  "https://nalanda-aws.bits-pilani.ac.in/*",
 	  "https://timetable.bits-dvm.org/renderer.html",
 	  "activeTab",
+	  "storage",
 	  "tabHide",
 	  "tabs",
 	  "webNavigation",
 	  "webRequest"
   ],
+  "background": {"scripts": ["/background_scripts/ttgen.js"]},
 
 
   "browser_action": {
