@@ -16,6 +16,6 @@ browser.webNavigation.onCompleted.addListener(
 
 browser.runtime.onMessage.addListener((message) => {
   if (message.tt) {
-    browser.storage.local.set(message);
+    browser.storage.local.set({ ...message, classLinks: {} });
   }
 });
