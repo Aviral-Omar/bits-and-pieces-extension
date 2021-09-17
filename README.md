@@ -15,6 +15,6 @@ Your app is ready to be deployed!
 ## Deploy
 
 To temporarily add extension to your browser:
-Firefox(https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Your_first_WebExtension#installing)
-Chrome(https://developer.chrome.com/docs/extensions/mv2/getstarted/#manifest)
-Edge(https://docs.microsoft.com/en-us/microsoft-edge/extensions-chromium/getting-started/extension-sideloading)
+[Firefox](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Your_first_WebExtension#installing)
+[Chrome](https://developer.chrome.com/docs/extensions/mv2/getstarted/#manifest)
+[Edge](https://docs.microsoft.com/en-us/microsoft-edge/extensions-chromium/getting-started/extension-sideloading)
