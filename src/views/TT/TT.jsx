@@ -10,18 +10,26 @@ import {
 	Paper,
 	Box,
 	Typography,
+	Tooltip,
 } from '@mui/material';
+import { Help } from '@mui/icons-material';
+
+import HelpPage from './HelpPage';
+import Slot from './Slot';
 
 const TimeTable = () => {
 	const [tt, setTT] = useState([]);
 	const [tableData, setTD] = useState([]);
+	const [linkData, setLD] = useState([]);
 
 	const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+	const help = `Double Click slot to add or modify link.\nSingle Click to redirect.\nWhen using multiple Google accounts, login with your BITS Email first.`;
 
 	useEffect(() => {
 		const td = new Array(12);
 		for (let i = 0; i < 12; i++) {
-			td[i] = new Array(6).fill(undefined);
+			td[i] = new Array(6).fill(null);
 		}
 
 		tt.forEach(course => {
@@ -71,8 +79,9 @@ const TimeTable = () => {
 
 	useEffect(() => {
 		const getTT = async () => {
-			const temp = await browser.storage.local.get('tt');
+			const temp = await browser.storage.local.get(['tt', 'linkData']);
 			setTT(JSON.stringify(temp) === '{}' ? [] : temp.tt);
+			setLD(JSON.stringify(temp) === '{}' ? [] : temp.linkData);
 		};
 		getTT();
 	}, []);
@@ -81,13 +90,17 @@ const TimeTable = () => {
 		return index < 5 ? `${index + 7}:00 AM` : index > 5 ? `${index - 5}:00 PM` : `12:00 PM`;
 	};
 
-	return tableData?.length ? (
+	return tt?.length ? (
 		<TableContainer component={Paper} sx={{ maxWidth: 680, maxHeight: 568 }}>
 			<Table size="small" stickyHeader style={{ width: 'auto', tableLayout: 'auto' }}>
 				<TableHead>
 					<TableRow>
-						<TableCell>
-							<Box sx={{ width: 64 }}></Box>
+						<TableCell align="center">
+							<Tooltip title={help} arrow>
+								<Box sx={{ width: 64 }}>
+									<Help />
+								</Box>
+							</Tooltip>
 						</TableCell>
 						{days.map(day => (
 							<TableCell align="center" key={day}>
@@ -110,30 +123,14 @@ const TimeTable = () => {
 							</TableCell>
 							{time.map((slot, day) => {
 								return slot ? (
-									<TableCell
-										sx={{
-											backgroundColor:
-												slot.type === 'L'
-													? 'text.secondary'
-													: slot.type === 'P'
-													? 'success.main'
-													: 'warning.main',
-										}}
-										key={`${day} ${time}`}
-									>
-										<Typography
-											variant="body2"
-											align="center"
-											sx={{ color: 'white' }}
-										>{`${slot.name}`}</Typography>
-										<Typography
-											variant="body2"
-											align="center"
-											sx={{ color: 'white' }}
-										>{`${slot.type}${slot.section}`}</Typography>
-									</TableCell>
+									<Slot
+										slot={slot}
+										link={linkData[index]?.[day]}
+										day={day}
+										index={index}
+									/>
 								) : (
-									<TableCell key={`${day} ${time}`}></TableCell>
+									<TableCell key={`${day} ${index}`}></TableCell>
 								);
 							})}
 						</TableRow>
@@ -142,7 +139,7 @@ const TimeTable = () => {
 			</Table>
 		</TableContainer>
 	) : (
-		<Box></Box>
+		<HelpPage />
 	);
 };
 

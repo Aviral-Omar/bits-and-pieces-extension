@@ -16,6 +16,10 @@ browser.webNavigation.onCompleted.addListener(
 
 browser.runtime.onMessage.addListener((message) => {
   if (message.tt) {
-    browser.storage.local.set({ ...message, classLinks: {} });
+    const ld = new Array(12);
+    for (let i = 0; i < 12; i++) {
+      ld[i] = new Array(6).fill(null);
+    }
+    browser.storage.local.set({ ...message, linkData: ld });
   }
 });

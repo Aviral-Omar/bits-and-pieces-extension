@@ -4,6 +4,10 @@
 
 In the project directory, you can run:
 
+### `npm i`
+
+To add the required modules in the folder.
+
 ### `npm run build`
 
 Builds the app for production to the `build` folder.\
