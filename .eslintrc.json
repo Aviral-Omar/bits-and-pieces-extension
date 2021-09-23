@@ -16,5 +16,12 @@
 		"react/jsx-props-no-spreading": "warn",
 		"react/prop-types": "warn",
 		"no-console": "warn"
+	},
+	"settings": {
+		"import/resolver": {
+			"node": {
+				"paths": ["src"]
+			}
+		}
 	}
 }

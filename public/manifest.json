@@ -2,6 +2,7 @@
   "manifest_version": 2,
   "name": "BITS and Pieces",
   "version": "1.0",
+  "author": "Aviral Omar",
 
   "description": "A pop-up which contains quick links to all frequently accessed University websites and logs into them automatically.",
   "icons": {
@@ -13,12 +14,11 @@
 	  "https://timetable.bits-dvm.org/renderer.html",
 	  "activeTab",
 	  "storage",
-	  "tabHide",
 	  "tabs",
 	  "webNavigation",
 	  "webRequest"
   ],
-  "background": {"scripts": ["/background_scripts/ttgen.js"]},
+  "background": {"scripts": ["/background_scripts/browser-polyfill.js","/background_scripts/ttgen.js"]},
 
 
   "browser_action": {

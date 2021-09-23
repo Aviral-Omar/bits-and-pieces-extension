@@ -6,7 +6,6 @@ let SCOPE =
 let CLIENTID =
   "668519179587-ld67oi74a4aiq45opesahghllr239tss.apps.googleusercontent.com";
 let REDIRECT = "https://academic.bits-pilani.ac.in";
-// let LOGOUT = 'http://accounts.google.com/Logout';
 let TYPE = "token";
 let _url =
   OAUTHURL +
@@ -19,10 +18,6 @@ let _url =
   "&response_type=" +
   TYPE;
 let acToken;
-// let tokenType;
-// let expiresIn;
-// let user;
-// let loggedIn = false;
 
 const addSession = async (user) => {
   await (
@@ -58,7 +53,6 @@ const getUserInfo = async () => {
     domain_matcher[1].indexOf(".", 0)
   );
   if (domain_name == "gmail") {
-    // loggedIn = false;
     window.location = "mailerror.aspx";
   }
   //End Check BITS Pilani
@@ -72,7 +66,6 @@ const getUserInfo = async () => {
 const validateToken = async (token) => {
   await (await content.fetch(VALIDURL + token)).json();
   await getUserInfo();
-  // loggedIn = true;
 };
 
 const gup = (url, name) => {
@@ -92,8 +85,6 @@ const login = () => {
         window.clearInterval(pollTimer);
         let url = tab.document.URL;
         acToken = gup(url, "access_token");
-        // tokenType = gup(url, 'token_type');
-        // expiresIn = gup(url, 'expires_in');
         tab.close();
         validateToken(acToken);
       }

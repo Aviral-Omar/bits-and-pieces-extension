@@ -1,4 +1,6 @@
 /*global browser*/
+
+//Firefox
 browser.webNavigation.onCompleted.addListener(
   async () => {
     try {
@@ -18,8 +20,16 @@ browser.runtime.onMessage.addListener((message) => {
   if (message.tt) {
     const ld = new Array(12);
     for (let i = 0; i < 12; i++) {
-      ld[i] = new Array(6).fill(null);
+      ld[i] = new Array(6);
+      for (let j = 0; j < 6; j++) {
+        ld[i][j] = {
+          url: "",
+          platform: undefined,
+        };
+      }
     }
     browser.storage.local.set({ ...message, linkData: ld });
   }
 });
+
+//Chrome
