@@ -1,4 +1,5 @@
 /* global browser, chrome*/
+//TODO Add links
 const getLink = (name) => {
   switch (name) {
     case "AUGSD":

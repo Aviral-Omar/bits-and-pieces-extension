@@ -18,7 +18,7 @@ const createTab = async url => {
 };
 
 const Slot = props => {
-	//TODO state for link containing platform and url initial values
+	//TODO Add validation, hints, automate gmeet, add settings
 	const [anchorEl, setAnchorEl] = useState(null);
 	const cell = useRef(null);
 

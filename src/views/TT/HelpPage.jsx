@@ -6,7 +6,7 @@ const HelpPage = () => (
 		<Typography variant="h5">Create your Time Table</Typography>
 		<Typography variant="subtitle1">
 			To get started, head on to{' '}
-			<Link href="https://timetable.bits-dvm.org/pilani.html">
+			<Link href="https://timetable.bits-dvm.org/pilani.html" target="_blank">
 				Time Table Generator by DVM
 			</Link>
 			.
