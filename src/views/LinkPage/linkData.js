@@ -1,4 +1,4 @@
-/* global browser*/
+/* global browser, chrome*/
 const getLink = (name) => {
   switch (name) {
     case "AUGSD":
@@ -59,39 +59,76 @@ const makeActive = (name) => {
 };
 
 const createTab = async (name) => {
-  const tab = await browser.tabs.create({
-    url: getLink(name),
-    active: makeActive(name),
-  });
-  return tab.id;
+  try {
+    //FF
+    const tab = await browser.tabs.create({
+      url: getLink(name),
+      active: makeActive(name),
+    });
+    automate(tab.id, name);
+  } catch {
+    //Chrome
+    chrome.tabs.create(
+      {
+        url: getLink(name),
+        active: makeActive(name),
+      },
+      (tab) => automate(tab.id, name)
+    );
+  }
 };
 
 const automate = async (tabId, name) => {
-  browser.webNavigation.onDOMContentLoaded.addListener(
-    async () => {
-      try {
-        await browser.tabs.executeScript({
-          file: "/content_scripts/browser-polyfill.js",
-        });
-        await browser.tabs.executeScript(tabId, {
-          file: `/content_scripts/${getScript(name)}.js`,
-        });
-      } catch (error) {
-        console.error(error);
+  try {
+    //FF
+    browser.webNavigation.onDOMContentLoaded.addListener(
+      async () => {
+        try {
+          await browser.tabs.executeScript(tabId, {
+            file: `/content_scripts/${getScript(name)}.js`,
+          });
+        } catch (error) {
+          console.error(error);
+        }
+      },
+      {
+        url: [
+          {
+            urlMatches: "https://academic.bits-pilani.ac.in/Student_Login.aspx",
+          },
+          {
+            urlMatches: "https://nalanda-aws.bits-pilani.ac.in/login/index.php",
+          },
+        ],
       }
-    },
-    {
-      url: [
-        { urlMatches: "https://academic.bits-pilani.ac.in/Student_Login.aspx" },
-        { urlMatches: "https://nalanda-aws.bits-pilani.ac.in/login/index.php" },
-      ],
-    }
-  );
+    );
+  } catch {
+    chrome.webNavigation.onCompleted.addListener(
+      async () => {
+        try {
+          await chrome.tabs.executeScript(tabId, {
+            file: `/content_scripts/${getScript(name)}.js`,
+          });
+        } catch (error) {
+          console.error(error);
+        }
+      },
+      {
+        url: [
+          {
+            urlMatches: "https://academic.bits-pilani.ac.in/Student_Login.aspx",
+          },
+          {
+            urlMatches: "https://nalanda-aws.bits-pilani.ac.in/login/index.php",
+          },
+        ],
+      }
+    );
+  }
 };
 
 const handleLink = async (name) => {
-  const tabId = await createTab(name);
-  automate(tabId, name);
+  createTab(name);
 };
 
 const linkData = [

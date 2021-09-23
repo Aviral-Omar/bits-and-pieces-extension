@@ -1,4 +1,4 @@
-/*global browser*/
+/*global browser, chrome*/
 import React, { useState, useEffect } from 'react';
 import {
 	Table,
@@ -30,14 +30,26 @@ const TimeTable = () => {
 		const ld = linkData;
 		ld[time][day].platform = platform;
 		setLD(ld);
-		await browser.storage.local.set({ linkData });
+		try {
+			//FF
+			await browser.storage.local.set({ linkData });
+		} catch {
+			//Chrome
+			await chrome.storage.local.set({ linkData });
+		}
 	};
 
 	const changeLink = async (day, time, url) => {
 		const ld = linkData;
 		ld[time][day].url = url;
 		setLD(ld);
-		await browser.storage.local.set({ linkData });
+		try {
+			//FF
+			await browser.storage.local.set({ linkData });
+		} catch {
+			//Chrome
+			await chrome.storage.local.set({ linkData });
+		}
 	};
 
 	useEffect(() => {
@@ -95,16 +107,18 @@ const TimeTable = () => {
 
 	useEffect(() => {
 		const getTT = async () => {
-			//Firefox
-			const temp = await browser.storage.local.get(['tt', 'linkData']);
-			setTT(JSON.stringify(temp) === '{}' ? {} : temp.tt);
-			setLD(JSON.stringify(temp) === '{}' ? [] : temp.linkData);
-
-			// Chrome
-			// await chrome.storage.local.get(['tt', 'linkData'], temp => {
-			// 	setTT(JSON.stringify(temp) === '{}' ? {} : temp.tt);
-			// 	setLD(JSON.stringify(temp) === '{}' ? [] : temp.linkData);
-			// });
+			try {
+				//Firefox
+				const temp = await browser.storage.local.get(['tt', 'linkData']);
+				setTT(JSON.stringify(temp) === '{}' ? {} : temp.tt);
+				setLD(JSON.stringify(temp) === '{}' ? [] : temp.linkData);
+			} catch {
+				// Chrome
+				await chrome.storage.local.get(['tt', 'linkData'], temp => {
+					setTT(JSON.stringify(temp) === '{}' ? {} : temp.tt);
+					setLD(JSON.stringify(temp) === '{}' ? [] : temp.linkData);
+				});
+			}
 		};
 		getTT();
 	}, []);
@@ -115,12 +129,14 @@ const TimeTable = () => {
 
 	const jsonTT = JSON.stringify(tt);
 
+	//Height 32 px less than container
+
 	return jsonTT === '{}' ? (
 		<HelpPage />
 	) : jsonTT === '[]' ? (
 		<Box />
 	) : (
-		<TableContainer component={Paper} sx={{ maxWidth: 680, maxHeight: 568 }}>
+		<TableContainer component={Paper} sx={{ maxWidth: 680, maxHeight: 552 }}>
 			<Table size="small" stickyHeader style={{ width: 'auto', tableLayout: 'auto' }}>
 				<TableHead>
 					<TableRow>

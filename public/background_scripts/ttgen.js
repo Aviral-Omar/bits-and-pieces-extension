@@ -1,9 +1,12 @@
-/*global browser*/
+/*global browser, chrome*/
 
-//Firefox
-browser.webNavigation.onCompleted.addListener(
+//Common
+browser.webNavigation.onDOMContentLoaded.addListener(
   async () => {
     try {
+      await browser.tabs.executeScript({
+        file: `/content_scripts/browser-polyfill.js`,
+      });
       await browser.tabs.executeScript({
         file: `/content_scripts/ttgen.js`,
       });
@@ -28,8 +31,12 @@ browser.runtime.onMessage.addListener((message) => {
         };
       }
     }
-    browser.storage.local.set({ ...message, linkData: ld });
+    try {
+      //FF
+      browser.storage.local.set({ ...message, linkData: ld });
+    } catch {
+      //Chrome
+      chrome.storage.local.set({ ...message, linkData: ld });
+    }
   }
 });
-
-//Chrome

@@ -5,6 +5,8 @@ import { LinkedIn, GitHub } from '@mui/icons-material';
 import avatar from './dp2sq.jpg';
 
 const About = () => (
+	//Height 16 px less than container
+
 	<Stack
 		spacing={1}
 		alignItems="center"

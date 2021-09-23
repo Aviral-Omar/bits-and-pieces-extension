@@ -28,7 +28,7 @@ const GroupCard = props => {
 					p: 1,
 					textAlign: 'center',
 					height: expanded ? 400 : 40,
-					overflowY: 'scroll',
+					overflowY: expanded ? 'scroll' : 'hidden',
 					cursor: 'pointer',
 					transition: 'height 0.3s',
 				}}

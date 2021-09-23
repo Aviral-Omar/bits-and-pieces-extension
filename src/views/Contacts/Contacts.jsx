@@ -5,12 +5,13 @@ import contactData from './contactData';
 import GroupCard from './GroupCard';
 
 const Contacts = () => {
+	//Height 16 px less than container
+
 	return (
 		<Grid
 			container
 			sx={{
 				height: 568,
-				overflowY: 'scroll',
 			}}
 			spacing={2}
 			alignContent="flex-start"
