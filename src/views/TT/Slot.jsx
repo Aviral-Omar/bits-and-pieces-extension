@@ -1,4 +1,4 @@
-/* global browser*/
+/* global browser, chrome*/
 import React, { useState, useRef, useEffect } from 'react';
 import {
 	TableCell,
@@ -13,23 +13,39 @@ import {
 } from '@mui/material';
 import PropTypes from 'prop-types';
 
-const createTab = async url => {
-	if (url) await browser.tabs.create({ url });
-};
-
 const Slot = props => {
-	//TODO Add validation, hints, automate gmeet, add settings
+	//TODO Automate gmeet, add settings
 	const [anchorEl, setAnchorEl] = useState(null);
+	const [error, setError] = useState(false);
 	const cell = useRef(null);
 
 	const { slot, slotLink, day, index, changePlatform, changeLink } = props;
-
 	const [link, setLink] = useState(slotLink);
 
 	let clicks = [];
 	let timeout;
 	const open = Boolean(anchorEl);
 	const id = open ? 'popover' : undefined;
+
+	const createTab = async () => {
+		if (link?.url) {
+			try {
+				await browser.tabs.create({
+					url:
+						link.platform === 'gmeet'
+							? `https://meet.google.com/${link.url}`
+							: link.url,
+				});
+			} catch {
+				await chrome.tabs.create({
+					url:
+						link.platform === 'gmeet'
+							? `https://meet.google.com/${link.url}`
+							: link.url,
+				});
+			}
+		}
+	};
 
 	const handleSelect = event => {
 		setLink({ ...link, platform: event.target.value });
@@ -58,14 +74,27 @@ const Slot = props => {
 			if (clicks.length > 1 && clicks[clicks.length - 1] - clicks[clicks.length - 2] < 300) {
 				openPopover(cell.current);
 			} else {
-				createTab(link?.url);
+				createTab();
 			}
 		}, 250);
+	};
+
+	const validateUrl = () => {
+		if (link?.platform === 'gmeet') {
+			if (link.url.search(/^[a-z]{3}-[a-z]{4}-[a-z]{3}$/) && link.url.search(/^[a-z]{10}$/)) {
+				return setError(true);
+			}
+		}
+		setError(false);
 	};
 
 	useEffect(() => {
 		setLink(slotLink);
 	}, [slotLink]);
+
+	useEffect(() => {
+		validateUrl();
+	}, [link]);
 
 	return (
 		<TableCell
@@ -112,8 +141,8 @@ const Slot = props => {
 							onChange={handleSelect}
 							sx={{ mb: 1 }}
 						>
-							<MenuItem value="Google Meet">Google Meet</MenuItem>
-							<MenuItem value="Microsoft Teams">Microsoft Teams</MenuItem>
+							<MenuItem value="gmeet">Google Meet</MenuItem>
+							<MenuItem value="teams">Microsoft Teams</MenuItem>
 						</Select>
 						<TextField
 							id="url"
@@ -121,7 +150,13 @@ const Slot = props => {
 							value={link?.url}
 							variant="filled"
 							size="small"
-							onChange={handleLink}
+							onInput={handleLink}
+							helperText={
+								link?.platform == 'gmeet'
+									? 'Enter meeting code'
+									: 'Enter channel link'
+							}
+							error={error}
 						/>
 					</FormControl>
 				</Box>

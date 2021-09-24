@@ -27,7 +27,7 @@ browser.runtime.onMessage.addListener((message) => {
       for (let j = 0; j < 6; j++) {
         ld[i][j] = {
           url: "",
-          platform: undefined,
+          platform: "gmeet",
         };
       }
     }

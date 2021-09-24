@@ -20,7 +20,6 @@ const App = () => {
 					sx={{
 						p: 2,
 						flexGrow: 1,
-						// overflow: 'hidden',
 						height: 584,
 						boxSizing: 'border-box',
 					}}
