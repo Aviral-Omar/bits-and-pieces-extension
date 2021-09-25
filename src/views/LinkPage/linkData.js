@@ -16,6 +16,8 @@ const getLink = (name) => {
       return "http://library.bits-pilani.ac.in/login.php";
     case "PSD":
       return "http://psd.bits-pilani.ac.in/Login.aspx";
+    case "IPC":
+      return "https://www.bits-pilani.ac.in/pilani/ipc/Services";
     case "SU":
       return "https://su-bitspilani.org/index.html";
     case "Sports Union":
@@ -54,6 +56,8 @@ const makeActive = (name) => {
   switch (name) {
     case "AUGSD":
       return false;
+    case "Nalanda":
+      return false;
     default:
       return true;
   }
@@ -74,7 +78,9 @@ const createTab = async (name) => {
         url: getLink(name),
         active: makeActive(name),
       },
-      (tab) => automate(tab.id, name)
+      (tab) => {
+        automate(tab.id, name);
+      }
     );
   }
 };
@@ -88,6 +94,10 @@ const automate = async (tabId, name) => {
           await browser.tabs.executeScript(tabId, {
             file: `/content_scripts/${getScript(name)}.js`,
           });
+          //Sign in page becomes active for AUGSD
+          if (name !== "AUGSD") {
+            browser.tabs.update(tabId, { active: true });
+          }
         } catch (error) {
           console.error(error);
         }
@@ -103,13 +113,18 @@ const automate = async (tabId, name) => {
         ],
       }
     );
+    browser.webNavigation.onCommitted.addListener(
+      () => browser.tabs.update(tabId, { active: true }),
+      { url: [{ urlContains: "https://nalanda-aws.bits-pilani.ac.in/my" }] }
+    );
   } catch {
-    chrome.webNavigation.onCompleted.addListener(
+    chrome.webNavigation.onDOMContentLoaded.addListener(
       async () => {
         try {
           await chrome.tabs.executeScript(tabId, {
             file: `/content_scripts/${getScript(name)}.js`,
           });
+          chrome.tabs.update(tabId, { active: true });
         } catch (error) {
           console.error(error);
         }
@@ -124,6 +139,10 @@ const automate = async (tabId, name) => {
           },
         ],
       }
+    );
+    chrome.webNavigation.onCommitted.addListener(
+      () => chrome.tabs.update(tabId, { active: true }),
+      { url: [{ urlContains: "https://nalanda-aws.bits-pilani.ac.in/my" }] }
     );
   }
 };
@@ -135,7 +154,16 @@ const handleLink = async (name) => {
 const linkData = [
   {
     title: "Institute Links",
-    links: ["AUGSD", "Nalanda", "ERP", "Notice Board", "SWD", "Library", "PSD"],
+    links: [
+      "AUGSD",
+      "Nalanda",
+      "ERP",
+      "Notice Board",
+      "SWD",
+      "Library",
+      "PSD",
+      "IPC",
+    ],
   },
   {
     title: "Unions, Clubs & Departments",

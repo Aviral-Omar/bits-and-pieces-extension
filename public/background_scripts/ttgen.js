@@ -1,42 +1,55 @@
 /*global browser, chrome*/
 
-//Common
-browser.webNavigation.onDOMContentLoaded.addListener(
-  async () => {
-    try {
-      await browser.tabs.executeScript({
-        file: `/content_scripts/browser-polyfill.js`,
-      });
-      await browser.tabs.executeScript({
-        file: `/content_scripts/ttgen.js`,
-      });
-    } catch (error) {
-      console.error(error);
-    }
-  },
-  {
-    url: [{ urlMatches: "https://timetable.bits-dvm.org/renderer.html" }],
+const listener = async () => {
+  try {
+    await browser.tabs.executeScript({
+      file: `/content_scripts/ttgen.js`,
+    });
+  } catch {
+    await chrome.tabs.executeScript({
+      file: `/content_scripts/ttgen.js`,
+    });
   }
-);
+};
 
-browser.runtime.onMessage.addListener((message) => {
-  if (message.tt) {
-    const ld = new Array(12);
-    for (let i = 0; i < 12; i++) {
-      ld[i] = new Array(6);
-      for (let j = 0; j < 6; j++) {
-        ld[i][j] = {
-          url: "",
-          platform: "gmeet",
-        };
+try {
+  browser.webNavigation.onDOMContentLoaded.addListener(listener, {
+    url: [{ urlMatches: "https://timetable.bits-dvm.org/renderer.html" }],
+  });
+
+  browser.runtime.onMessage.addListener((message) => {
+    if (message.tt) {
+      const ld = new Array(12);
+      for (let i = 0; i < 12; i++) {
+        ld[i] = new Array(6);
+        for (let j = 0; j < 6; j++) {
+          ld[i][j] = {
+            url: "",
+            platform: "gmeet",
+          };
+        }
       }
-    }
-    try {
-      //FF
       browser.storage.local.set({ ...message, linkData: ld });
-    } catch {
-      //Chrome
+    }
+  });
+} catch {
+  chrome.webNavigation.onDOMContentLoaded.addListener(listener, {
+    url: [{ urlMatches: "https://timetable.bits-dvm.org/renderer.html" }],
+  });
+
+  chrome.runtime.onMessage.addListener((message) => {
+    if (message.tt) {
+      const ld = new Array(12);
+      for (let i = 0; i < 12; i++) {
+        ld[i] = new Array(6);
+        for (let j = 0; j < 6; j++) {
+          ld[i][j] = {
+            url: "",
+            platform: "gmeet",
+          };
+        }
+      }
       chrome.storage.local.set({ ...message, linkData: ld });
     }
-  }
-});
+  });
+}

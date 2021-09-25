@@ -18,7 +18,7 @@
 	  "webNavigation",
 	  "webRequest"
   ],
-  "background": {"scripts": ["/background_scripts/browser-polyfill.js","/background_scripts/ttgen.js"]},
+  "background": {"scripts": ["/background_scripts/ttgen.js"]},
 
 
   "browser_action": {
