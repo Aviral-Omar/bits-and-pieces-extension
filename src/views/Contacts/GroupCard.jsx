@@ -10,8 +10,8 @@ const Contact = props => {
 	return (
 		<ListItem onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
 			<ListItemText
-				primary={hover ? contact.number : contact.position}
-				secondary={hover ? '' : contact.name}
+				primary={contact.position}
+				secondary={hover ? contact.number : contact.name}
 			/>
 		</ListItem>
 	);
@@ -27,7 +27,7 @@ const GroupCard = props => {
 				sx={{
 					p: 1,
 					textAlign: 'center',
-					height: expanded ? 400 : 40,
+					height: expanded ? 320 : 40,
 					overflowY: expanded ? 'scroll' : 'hidden',
 					cursor: 'pointer',
 					transition: 'height 0.3s',

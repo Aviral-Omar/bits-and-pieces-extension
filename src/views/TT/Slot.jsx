@@ -73,7 +73,7 @@ const Slot = props => {
 		timeout = window.setTimeout(() => {
 			if (clicks.length > 1 && clicks[clicks.length - 1] - clicks[clicks.length - 2] < 300) {
 				openPopover(cell.current);
-			} else {
+			} else if (!error) {
 				createTab();
 			}
 		}, 250);

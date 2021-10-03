@@ -1,12 +1,15 @@
-/*global browser*/
+/*global browser, chrome*/
 const addButton = document.createElement("button");
-const text = document.createTextNode("Add to BITS and Pieces");
-addButton.appendChild(text);
+addButton.textContent = "Add to BITS Compendium";
 addButton.setAttribute("id", "button1");
 addButton.setAttribute("class", "pdfbutton");
 addButton.onclick = () => {
   const tt = JSON.parse(localStorage.getItem("time_table"));
-  browser.runtime.sendMessage({ tt: tt[0] });
+  try {
+    browser.runtime.sendMessage({ tt: tt[0] });
+  } catch {
+    chrome.runtime.sendMessage({ tt: tt[0] });
+  }
 };
 
 const pdfButton = document.getElementById("button0");

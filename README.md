@@ -1,4 +1,6 @@
-# BITS and Pieces Browser Extension
+# BITS Compendium Browser Extension
+
+Built and tested in Pop!\_OS 21.04 using npm 7.21.1.\
 
 ## Build Yourself
 

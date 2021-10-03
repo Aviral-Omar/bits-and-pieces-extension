@@ -30,6 +30,8 @@ const getLink = (name) => {
       return "https://epcbits.com/";
     case "HPC":
       return "https://hindipressclub.wordpress.com/";
+    case "The BITS Review":
+      return "https://thebitsreview.org/";
     case "WiFi Login":
       return "https://fw.bits-pilani.ac.in:8090/httpclient.html";
     case "Time Table Generator":
@@ -38,6 +40,14 @@ const getLink = (name) => {
       return "https://map.epcbits.com/";
     case "Handouts":
       return "https://sacbitspilani.wordpress.com/resources/";
+    case "Google Meet":
+      return "https://meet.google.com/";
+    case "Google Calendar":
+      return "https://calendar.google.com/";
+    case "Google Classroom":
+      return "https://classroom.google.com/";
+    case "Canvas":
+      return "https://canvas.instructure.com/login/google";
   }
 };
 
@@ -167,11 +177,15 @@ const linkData = [
   },
   {
     title: "Unions, Clubs & Departments",
-    links: ["SU", "Sports Union", "SAC", "EC", "EPC", "HPC"],
+    links: ["SU", "Sports Union", "SAC", "EC", "EPC", "HPC", "The BITS Review"],
   },
   {
     title: "Utility",
     links: ["WiFi Login", "Time Table Generator", "BITS Map", "Handouts"],
+  },
+  {
+    title: "Classes & Evaluation",
+    links: ["Google Meet", "Google Calendar", "Google Classroom", "Canvas"],
   },
 ];
 

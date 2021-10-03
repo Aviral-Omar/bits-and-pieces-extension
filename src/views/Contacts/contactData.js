@@ -1,4 +1,3 @@
-//TODO Add contacts
 const contactData = [
   {
     title: "Student Union",
@@ -6,42 +5,42 @@ const contactData = [
       {
         position: "President",
         name: "Harsh Shukla",
-        number: "+91 7390967807",
+        number: "7390967807",
       },
       {
-        position: "General Secretary",
-        name: "Out of Order",
-        number: "-",
+        position: "Acting General Secretary",
+        name: "Pranav Shanmukh Yellayi",
+        number: "8305191706",
       },
       {
         position: "2018 Batch Representative",
         name: "Aman Manish Garg",
-        number: "TBD",
+        number: "9755459845",
       },
-      {
-        position: "2018 Batch Representative",
-        name: "Nitin H Govind",
-        number: "TBD",
-      },
+      // {
+      // 	position: '2018 Batch Representative',
+      // 	name: 'Nitin H Govind',
+      // 	number: '-',
+      // },
       {
         position: "2019 Batch Representative",
         name: "Pranav Shanmukh Yellayi",
-        number: "+91 8305191706",
+        number: "8305191706",
       },
       {
         position: "2019 Batch Representative",
         name: "Aditi Sharma",
-        number: "+91 9602571441",
+        number: "9602571441",
       },
       {
         position: "2020 Batch Representative",
         name: "Yash Anil Saboo",
-        number: "TBD",
+        number: "9534065076",
       },
       {
         position: "2020 Batch Representative",
         name: "Naman Gupta",
-        number: "TBD",
+        number: "8791629985",
       },
     ],
   },
@@ -51,12 +50,22 @@ const contactData = [
       {
         position: "Chief Warden",
         name: "Dr. Navin Singh",
-        number: "0159 6255286",
+        number: "9694096457",
       },
       {
-        position: "SWD",
-        name: "",
-        number: "0159 6242282",
+        position: "Associate Dean, AUGSD",
+        name: "Dr. Suresh Gupta",
+        number: "9772974342",
+      },
+      {
+        position: "Associate Dean, SWD",
+        name: "Dr. Srikanta Routroy",
+        number: "9694096456",
+      },
+      {
+        position: "SWD Fee Related Issues",
+        name: "Shrawan Kumar",
+        number: "9875192068",
       },
     ],
   },
@@ -66,277 +75,32 @@ const contactData = [
       {
         position: "S9",
         name: "Stationary",
-        number: "",
+        number: "7737536184",
       },
       {
         position: "Javed Habib",
         name: "Salon",
-        number: "",
+        number: "7737005119	",
       },
       {
         position: "Laundromat",
         name: "Laundry",
-        number: "+91 9660914563",
-      },
-    ],
-  },
-  {
-    title: "Meera Bhawan",
-    contacts: [
-      {
-        position: "Chowki",
-        name: "",
-        number: "",
+        number: "9660914563",
       },
       {
-        position: "Superintendent",
-        name: "",
-        number: "",
+        position: "Cycle Repair",
+        name: "Ram Ji",
+        number: "9929154632",
       },
       {
-        position: "Warden",
-        name: "",
-        number: "",
-      },
-    ],
-  },
-  {
-    title: "SR Bhawan",
-    contacts: [
-      {
-        position: "Chowki",
-        name: "",
-        number: "",
+        position: "Roongta House",
+        name: "Book Store",
+        number: "9694840027",
       },
       {
-        position: "Superintendent",
-        name: "",
-        number: "",
-      },
-      {
-        position: "Warden",
-        name: "",
-        number: "",
-      },
-    ],
-  },
-  {
-    title: "Krishna Bhawan",
-    contacts: [
-      {
-        position: "Chowki",
-        name: "",
-        number: "",
-      },
-      {
-        position: "Superintendent",
-        name: "",
-        number: "",
-      },
-      {
-        position: "Warden",
-        name: "",
-        number: "",
-      },
-    ],
-  },
-  {
-    title: "Gandhi Bhawan",
-    contacts: [
-      {
-        position: "Chowki",
-        name: "",
-        number: "",
-      },
-      {
-        position: "Superintendent",
-        name: "",
-        number: "",
-      },
-      {
-        position: "Warden",
-        name: "",
-        number: "",
-      },
-    ],
-  },
-  {
-    title: "Ram Bhawan",
-    contacts: [
-      {
-        position: "Chowki",
-        name: "",
-        number: "",
-      },
-      {
-        position: "Superintendent",
-        name: "",
-        number: "",
-      },
-      {
-        position: "Warden",
-        name: "",
-        number: "",
-      },
-    ],
-  },
-  {
-    title: "Budh Bhawan",
-    contacts: [
-      {
-        position: "Chowki",
-        name: "",
-        number: "",
-      },
-      {
-        position: "Superintendent",
-        name: "",
-        number: "",
-      },
-      {
-        position: "Warden",
-        name: "",
-        number: "",
-      },
-    ],
-  },
-  {
-    title: "Shankar Bhawan",
-    contacts: [
-      {
-        position: "Chowki",
-        name: "",
-        number: "",
-      },
-      {
-        position: "Superintendent",
-        name: "",
-        number: "",
-      },
-      {
-        position: "Warden",
-        name: "",
-        number: "",
-      },
-    ],
-  },
-  {
-    title: "Malviya-B Bhawan",
-    contacts: [
-      {
-        position: "Chowki",
-        name: "",
-        number: "",
-      },
-      {
-        position: "Superintendent",
-        name: "",
-        number: "",
-      },
-      {
-        position: "Warden",
-        name: "",
-        number: "",
-      },
-    ],
-  },
-  {
-    title: "Vishwakarma Bhawan",
-    contacts: [
-      {
-        position: "Chowki",
-        name: "",
-        number: "",
-      },
-      {
-        position: "Superintendent",
-        name: "",
-        number: "",
-      },
-      {
-        position: "Warden",
-        name: "",
-        number: "",
-      },
-    ],
-  },
-  {
-    title: "Bhagirath Bhawan",
-    contacts: [
-      {
-        position: "Chowki",
-        name: "",
-        number: "",
-      },
-      {
-        position: "Superintendent",
-        name: "",
-        number: "",
-      },
-      {
-        position: "Warden",
-        name: "",
-        number: "",
-      },
-    ],
-  },
-  {
-    title: "Rana Pratap Bhawan",
-    contacts: [
-      {
-        position: "Chowki",
-        name: "",
-        number: "",
-      },
-      {
-        position: "Superintendent",
-        name: "",
-        number: "",
-      },
-      {
-        position: "Warden",
-        name: "",
-        number: "",
-      },
-    ],
-  },
-  {
-    title: "Ashok Bhawan",
-    contacts: [
-      {
-        position: "Chowki",
-        name: "",
-        number: "",
-      },
-      {
-        position: "Superintendent",
-        name: "",
-        number: "",
-      },
-      {
-        position: "Warden",
-        name: "",
-        number: "",
-      },
-    ],
-  },
-  {
-    title: "CV Raman Bhawan",
-    contacts: [
-      {
-        position: "Chowki",
-        name: "",
-        number: "",
-      },
-      {
-        position: "Superintendent",
-        name: "",
-        number: "",
-      },
-      {
-        position: "Warden",
-        name: "",
-        number: "",
+        position: "Ashu Book House",
+        name: "Book Store",
+        number: "8769591021 / 8502016963",
       },
     ],
   },
@@ -345,21 +109,316 @@ const contactData = [
     contacts: [
       {
         position: "Chowki",
-        name: "",
-        number: "",
-      },
-      {
-        position: "Superintendent",
-        name: "",
-        number: "",
-      },
-      {
-        position: "Warden",
-        name: "",
-        number: "",
+        name: "Vidyadhar",
+        number: "7231066148",
       },
     ],
   },
+  {
+    title: "Meera Bhawan",
+    contacts: [
+      // {
+      // 	position: 'Chowki',
+      // 	name: '-',
+      // 	number: '-',
+      // },
+      {
+        position: "Superintendent",
+        name: "Ms. Ritu",
+        number: "9694096468",
+      },
+      {
+        position: "Superintendent",
+        name: "Dr. Indu Saini",
+        number: "8426890244",
+      },
+      {
+        position: "Non-Residential Warden",
+        name: "Dr. Meetha V. Shenoy",
+        number: "-",
+      },
+      {
+        position: "Warden",
+        name: "Dr. Surekha Bhanot",
+        number: "9694096461",
+      },
+      {
+        position: "Warden",
+        name: "Dr. Rakhee",
+        number: "9414424442",
+      },
+    ],
+  },
+  {
+    title: "SR Bhawan",
+    contacts: [
+      {
+        position: "Chowki",
+        name: "Hawa Singh",
+        number: "9252066689",
+      },
+      {
+        position: "Chowki",
+        name: "Omveer Singh",
+        number: "8769366142",
+      },
+      {
+        position: "Superintendent",
+        name: "Mr. Mahavir Singh",
+        number: "9694096464",
+      },
+      {
+        position: "Warden",
+        name: "Dr. Krishna M",
+        number: "8619086290",
+      },
+    ],
+  },
+  {
+    title: "Krishna Bhawan",
+    contacts: [
+      {
+        position: "Chowki",
+        name: "Mahender Singh",
+        number: "9929038631",
+      },
+      {
+        position: "Superintendent",
+        name: "Harbans Lal Chouhan",
+        number: "9785644053 / 9602735216",
+      },
+      {
+        position: "Warden",
+        name: "Dr. Arun Kumar Jalan",
+        number: "9414082757",
+      },
+    ],
+  },
+  {
+    title: "Gandhi Bhawan",
+    contacts: [
+      {
+        position: "Chowki",
+        name: "-",
+        number: "-",
+      },
+      {
+        position: "Superintendent",
+        name: "Mr. Sanjay Tomar",
+        number: "9694096485",
+      },
+      {
+        position: "Warden",
+        name: "Dr. Kamlesh  Tiwari",
+        number: "-",
+      },
+    ],
+  },
+  {
+    title: "Ram Bhawan",
+    contacts: [
+      {
+        position: "Chowki",
+        name: "-",
+        number: "-",
+      },
+      {
+        position: "Superintendent",
+        name: "Mr. Mahaveer Singh",
+        number: "9799005281",
+      },
+      {
+        position: "Warden",
+        name: "Dr. Dipendu Bhunia",
+        number: "9694096490",
+      },
+    ],
+  },
+  {
+    title: "Budh Bhawan",
+    contacts: [
+      {
+        position: "Chowki",
+        name: "Raghubeer Singh",
+        number: "9829630775",
+      },
+      {
+        position: "Superintendent",
+        name: "Sammar Singh",
+        number: "9694096474",
+      },
+      {
+        position: "Warden",
+        name: "Dr. Sharad Shrivastava",
+        number: "9494096472 / 9351150986",
+      },
+    ],
+  },
+  {
+    title: "Shankar Bhawan",
+    contacts: [
+      {
+        position: "Chowki",
+        name: "Mr. Vikram Singh",
+        number: "8769640715",
+      },
+      {
+        position: "Superintendent",
+        name: "Mr. Rajendra Bhatt",
+        number: "7568998155",
+      },
+      {
+        position: "Non-Residential Warden",
+        name: "Dr. Harikrishnan Gopinadhan Nair",
+        number: "-",
+      },
+      {
+        position: "Warden",
+        name: "Dr. Kumar Sankar Bhattacharya",
+        number: "7737266378",
+      },
+    ],
+  },
+  // {
+  // 	title: 'Vyas Bhawan',
+  // 	contacts: [
+  // 		{
+  // 			position: 'Chowki',
+  // 			name: '-',
+  // 			number: '-',
+  // 		},
+  // 		{
+  // 			position: 'Superintendent',
+  // 			name: '-',
+  // 			number: '-',
+  // 		},
+  // 		{
+  // 			position: 'Warden',
+  // 			name: '-',
+  // 			number: '-',
+  // 		},
+  // 	],
+  // },
+  {
+    title: "Malviya-A Bhawan",
+    contacts: [
+      {
+        position: "Chowki",
+        name: "-",
+        number: "-",
+      },
+      {
+        position: "Superintendent",
+        name: "Mr. Rohitaswa Rathore",
+        number: "9694096465",
+      },
+      {
+        position: "Warden",
+        name: "Dr. Trilok Mathur",
+        number: "9694096460",
+      },
+    ],
+  },
+  {
+    title: "Vishwakarma Bhawan",
+    contacts: [
+      {
+        position: "Chowki",
+        name: "-",
+        number: "-",
+      },
+      {
+        position: "Superintendent",
+        name: "-",
+        number: "-",
+      },
+      {
+        position: "Warden",
+        name: "-",
+        number: "-",
+      },
+    ],
+  },
+  // {
+  // 	title: 'Bhagirath Bhawan',
+  // 	contacts: [
+  // 		{
+  // 			position: 'Chowki',
+  // 			name: '-',
+  // 			number: '-',
+  // 		},
+  // 		{
+  // 			position: 'Superintendent',
+  // 			name: '-',
+  // 			number: '-',
+  // 		},
+  // 		{
+  // 			position: 'Warden',
+  // 			name: '-',
+  // 			number: '-',
+  // 		},
+  // 	],
+  // },
+  // {
+  // 	title: 'Rana Pratap Bhawan',
+  // 	contacts: [
+  // 		{
+  // 			position: 'Chowki',
+  // 			name: '-',
+  // 			number: '-',
+  // 		},
+  // 		{
+  // 			position: 'Superintendent',
+  // 			name: '-',
+  // 			number: '-',
+  // 		},
+  // 		{
+  // 			position: 'Warden',
+  // 			name: '-',
+  // 			number: '-',
+  // 		},
+  // 	],
+  // },
+  // {
+  // 	title: 'Ashok Bhawan',
+  // 	contacts: [
+  // 		{
+  // 			position: 'Chowki',
+  // 			name: '-',
+  // 			number: '-',
+  // 		},
+  // 		{
+  // 			position: 'Superintendent',
+  // 			name: '-',
+  // 			number: '-',
+  // 		},
+  // 		{
+  // 			position: 'Warden',
+  // 			name: '-',
+  // 			number: '-',
+  // 		},
+  // 	],
+  // },
+  // {
+  // 	title: 'CV Raman Bhawan',
+  // 	contacts: [
+  // 		{
+  // 			position: 'Chowki',
+  // 			name: '-',
+  // 			number: '-',
+  // 		},
+  // 		{
+  // 			position: 'Superintendent',
+  // 			name: '-',
+  // 			number: '-',
+  // 		},
+  // 		{
+  // 			position: 'Warden',
+  // 			name: '-',
+  // 			number: '-',
+  // 		},
+  // 	],
+  // },
 ];
 
 export default contactData;

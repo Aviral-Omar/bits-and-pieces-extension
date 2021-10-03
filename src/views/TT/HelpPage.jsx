@@ -1,9 +1,10 @@
 import React from 'react';
-import { Typography, Box, Link } from '@mui/material';
+import { Typography, Box, Link, Divider } from '@mui/material';
 
 const HelpPage = () => (
 	<Box>
 		<Typography variant="h5">Create your Time Table</Typography>
+		<Divider sx={{ my: 1 }} />
 		<Typography variant="subtitle1">
 			To get started, head on to{' '}
 			<Link href="https://timetable.bits-dvm.org/pilani.html" target="_blank">

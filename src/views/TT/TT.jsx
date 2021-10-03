@@ -23,6 +23,7 @@ const TimeTable = () => {
 	const [linkData, setLD] = useState([]);
 
 	const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+	const today = new Date().getDay();
 
 	const help = `Double Click slot to add or modify link.\nSingle Click to redirect.\nWhen using multiple Google accounts, login with your BITS Email first.`;
 
@@ -150,7 +151,11 @@ const TimeTable = () => {
 						{days.map(day => (
 							<TableCell align="center" key={day}>
 								<Box sx={{ width: 120 }}>
-									<Typography variant="button" align="center">
+									<Typography
+										variant="button"
+										align="center"
+										sx={{ color: day === today ? '#1976d2' : 'black' }}
+									>
 										{day}
 									</Typography>
 								</Box>

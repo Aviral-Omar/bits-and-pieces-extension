@@ -1,12 +1,12 @@
 {
   "manifest_version": 2,
-  "name": "BITS and Pieces",
-  "version": "1.0",
+  "name": "BITS Compendium",
+  "version": "0.2",
   "author": "Aviral Omar",
 
-  "description": "A pop-up which contains quick links to all frequently accessed University websites and logs into them automatically.",
+  "description": "A browser extension to make life easier and save a few clicks throughout your day while trying to access online classes and important BITS Pilani University Websites.",
   "icons": {
-    "48": "icons/bp-48.png"
+    "48": "icons/bc-48.png"
   },
   "permissions": [
 	  "https://academic.bits-pilani.ac.in/*",
@@ -22,8 +22,8 @@
 
 
   "browser_action": {
-    "default_icon": "icons/bp-32.png",
-    "default_title": "BITS and Pieces",
+    "default_icon": "icons/bc-32.png",
+    "default_title": "BITS Compendium",
     "default_popup": "index.html"
   }
 }
