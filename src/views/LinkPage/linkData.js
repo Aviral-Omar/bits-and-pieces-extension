@@ -73,6 +73,76 @@ const makeActive = (name) => {
   }
 };
 
+const automate = async (tabId, name) => {
+  try {
+    //FF
+    browser.webNavigation.onDOMContentLoaded.addListener(
+      async () => {
+        try {
+          await browser.tabs.executeScript(tabId, {
+            file: `/content_scripts/${getScript(name)}.js`,
+          });
+          //Sign in page becomes active for AUGSD
+          if (name !== "AUGSD") {
+            browser.tabs.update(tabId, { active: true });
+          }
+          window.close();
+        } catch (error) {
+          console.error(error);
+        }
+      },
+      {
+        url: [
+          {
+            urlMatches: "https://academic.bits-pilani.ac.in/Student_Login.aspx",
+          },
+          {
+            urlMatches: "https://nalanda-aws.bits-pilani.ac.in/login/index.php",
+          },
+        ],
+      }
+    );
+    browser.webNavigation.onCommitted.addListener(
+      () => {
+        browser.tabs.update(tabId, { active: true });
+        window.close();
+      },
+      { url: [{ urlContains: "https://nalanda-aws.bits-pilani.ac.in/my" }] }
+    );
+  } catch {
+    chrome.webNavigation.onDOMContentLoaded.addListener(
+      async () => {
+        try {
+          await chrome.tabs.executeScript(tabId, {
+            file: `/content_scripts/${getScript(name)}.js`,
+          });
+          chrome.tabs.update(tabId, { active: true });
+          window.close();
+        } catch (error) {
+          console.error(error);
+        }
+      },
+      {
+        url: [
+          {
+            urlMatches: "https://academic.bits-pilani.ac.in/Student_Login.aspx",
+          },
+          {
+            urlMatches: "https://nalanda-aws.bits-pilani.ac.in/login/index.php",
+          },
+        ],
+      }
+    );
+    chrome.webNavigation.onCommitted.addListener(
+      () => {
+        chrome.tabs.update(tabId, { active: true });
+        window.close();
+      },
+      { url: [{ urlContains: "https://nalanda-aws.bits-pilani.ac.in/my" }] }
+    );
+  }
+};
+
 const createTab = async (name) => {
   try {
     //FF
@@ -91,68 +161,6 @@ const createTab = async (name) => {
       (tab) => {
         automate(tab.id, name);
       }
-    );
-  }
-};
-
-const automate = async (tabId, name) => {
-  try {
-    //FF
-    browser.webNavigation.onDOMContentLoaded.addListener(
-      async () => {
-        try {
-          await browser.tabs.executeScript(tabId, {
-            file: `/content_scripts/${getScript(name)}.js`,
-          });
-          //Sign in page becomes active for AUGSD
-          if (name !== "AUGSD") {
-            browser.tabs.update(tabId, { active: true });
-          }
-        } catch (error) {
-          console.error(error);
-        }
-      },
-      {
-        url: [
-          {
-            urlMatches: "https://academic.bits-pilani.ac.in/Student_Login.aspx",
-          },
-          {
-            urlMatches: "https://nalanda-aws.bits-pilani.ac.in/login/index.php",
-          },
-        ],
-      }
-    );
-    browser.webNavigation.onCommitted.addListener(
-      () => browser.tabs.update(tabId, { active: true }),
-      { url: [{ urlContains: "https://nalanda-aws.bits-pilani.ac.in/my" }] }
-    );
-  } catch {
-    chrome.webNavigation.onDOMContentLoaded.addListener(
-      async () => {
-        try {
-          await chrome.tabs.executeScript(tabId, {
-            file: `/content_scripts/${getScript(name)}.js`,
-          });
-          chrome.tabs.update(tabId, { active: true });
-        } catch (error) {
-          console.error(error);
-        }
-      },
-      {
-        url: [
-          {
-            urlMatches: "https://academic.bits-pilani.ac.in/Student_Login.aspx",
-          },
-          {
-            urlMatches: "https://nalanda-aws.bits-pilani.ac.in/login/index.php",
-          },
-        ],
-      }
-    );
-    chrome.webNavigation.onCommitted.addListener(
-      () => chrome.tabs.update(tabId, { active: true }),
-      { url: [{ urlContains: "https://nalanda-aws.bits-pilani.ac.in/my" }] }
     );
   }
 };

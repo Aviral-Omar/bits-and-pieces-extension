@@ -83,9 +83,14 @@ const contactData = [
         number: "7737005119	",
       },
       {
-        position: "Laundromat",
+        position: "Laundromat - CVR",
         name: "Laundry",
         number: "9660914563",
+      },
+      {
+        position: "Laundromat - Malviya",
+        name: "Laundry",
+        number: "9116662704",
       },
       {
         position: "Cycle Repair",
@@ -199,18 +204,23 @@ const contactData = [
     contacts: [
       {
         position: "Chowki",
-        name: "-",
-        number: "-",
+        name: "Mr. Vinod Kumar",
+        number: "9928441374",
       },
       {
         position: "Superintendent",
         name: "Mr. Sanjay Tomar",
-        number: "9694096485",
+        number: "9694096485 / 9672344399",
+      },
+      {
+        position: "Non-Residential Warden",
+        name: "Dr. Devendra Singh",
+        number: "9414935853",
       },
       {
         position: "Warden",
-        name: "Dr. Kamlesh  Tiwari",
-        number: "-",
+        name: "Dr. Kamlesh Tiwari",
+        number: "9694096452",
       },
     ],
   },
@@ -219,13 +229,18 @@ const contactData = [
     contacts: [
       {
         position: "Chowki",
-        name: "-",
-        number: "-",
+        name: "Mr. Karan Singh",
+        number: "9829661910",
       },
       {
         position: "Superintendent",
         name: "Mr. Mahaveer Singh",
         number: "9799005281",
+      },
+      {
+        position: "Non-Residential Warden",
+        name: "Dr. Murali Manohar Pandey",
+        number: "9950952634",
       },
       {
         position: "Warden",
@@ -304,8 +319,8 @@ const contactData = [
     contacts: [
       {
         position: "Chowki",
-        name: "-",
-        number: "-",
+        name: "Mr. Babulal",
+        number: "9928327924",
       },
       {
         position: "Superintendent",
@@ -324,41 +339,36 @@ const contactData = [
     contacts: [
       {
         position: "Chowki",
-        name: "-",
-        number: "-",
+        name: "Mr. Bhagu Khan",
+        number: "9929110686",
       },
       {
         position: "Superintendent",
-        name: "-",
-        number: "-",
+        name: "Mr. Samunder Singh",
+        number: "9694096473 / 9991196473",
       },
       {
         position: "Warden",
-        name: "-",
-        number: "-",
+        name: "Dr. Krishnendra Shekhawat",
+        number: "9468839182",
       },
     ],
   },
-  // {
-  // 	title: 'Bhagirath Bhawan',
-  // 	contacts: [
-  // 		{
-  // 			position: 'Chowki',
-  // 			name: '-',
-  // 			number: '-',
-  // 		},
-  // 		{
-  // 			position: 'Superintendent',
-  // 			name: '-',
-  // 			number: '-',
-  // 		},
-  // 		{
-  // 			position: 'Warden',
-  // 			name: '-',
-  // 			number: '-',
-  // 		},
-  // 	],
-  // },
+  {
+    title: "Bhagirath Bhawan",
+    contacts: [
+      {
+        position: "Chowki",
+        name: "Mr. Dalip Singh",
+        number: "8107353882",
+      },
+      {
+        position: "Superintendent",
+        name: "Mr. Samunder Singh",
+        number: "9694096473 / 9991196473",
+      },
+    ],
+  },
   // {
   // 	title: 'Rana Pratap Bhawan',
   // 	contacts: [

@@ -4,6 +4,7 @@ import { Grid, Button, Box, Typography, Divider } from '@mui/material';
 import { handleLink, linkData } from './linkData';
 
 const LinkPage = () => {
+	//TODO close popup on click
 	//Height 16 px less than container
 	return (
 		<Box sx={{ height: 568 }}>
