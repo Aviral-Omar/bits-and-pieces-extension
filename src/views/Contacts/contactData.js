@@ -50,7 +50,7 @@ const contactData = [
       {
         position: "Chief Warden",
         name: "Dr. Navin Singh",
-        number: "9694096457",
+        number: "9694096457 / 9887321072",
       },
       {
         position: "Associate Dean, AUGSD",
@@ -93,9 +93,14 @@ const contactData = [
         number: "9116662704",
       },
       {
-        position: "Cycle Repair",
+        position: "Cycle Repair - Library",
         name: "Ram Ji",
         number: "9929154632",
+      },
+      {
+        position: "Laptop Repair",
+        name: "Akshay",
+        number: "8104632295",
       },
       {
         position: "Roongta House",
@@ -122,11 +127,6 @@ const contactData = [
   {
     title: "Meera Bhawan",
     contacts: [
-      // {
-      // 	position: 'Chowki',
-      // 	name: '-',
-      // 	number: '-',
-      // },
       {
         position: "Superintendent",
         name: "Ms. Ritu",

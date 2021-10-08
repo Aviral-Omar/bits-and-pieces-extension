@@ -23,3 +23,6 @@ yarn-debug.log*
 yarn-error.log*
 
 .eslintcache
+bits_compendium_edge.zip
+.eslintcache
+bits_compendium.zip

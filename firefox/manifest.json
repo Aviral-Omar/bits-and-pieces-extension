@@ -6,7 +6,7 @@
   "default_locale": "en",
   "description": "A browser extension to make life easier and save a few clicks throughout your day while trying to access online classes and important BITS Pilani University Websites.",
   "icons": {
-    "32": "icons/bc-32.png",
+	"32": "icons/bc-32.png",
     "48": "icons/bc-48.png",
 	"128": "icons/bc-128.png"
   },
@@ -21,7 +21,6 @@
 	  "webRequest"
   ],
   "background": {"scripts": ["/background_scripts/ttgen.js"]},
-  "update_URL": "https://edge.microsoft.com/extensionwebstorebase/v1/crx",
   "browser_action": {
     "default_icon": "icons/bc-32.png",
     "default_title": "BITS Compendium",
