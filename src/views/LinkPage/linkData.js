@@ -36,6 +36,8 @@ const getLink = (name) => {
       return "https://fw.bits-pilani.ac.in:8090/httpclient.html";
     case "Time Table Generator":
       return "https://timetable.bits-dvm.org/pilani.html";
+    case "StudyDeck":
+      return "https://studydeck.bits-sutechteam.org/";
     case "BITS Map":
       return "https://map.epcbits.com/";
     case "Handouts":
@@ -189,7 +191,13 @@ const linkData = [
   },
   {
     title: "Utility",
-    links: ["WiFi Login", "Time Table Generator", "BITS Map", "Handouts"],
+    links: [
+      "WiFi Login",
+      "Time Table Generator",
+      "StudyDeck",
+      "BITS Map",
+      "Handouts",
+    ],
   },
   {
     title: "Classes & Evaluation",

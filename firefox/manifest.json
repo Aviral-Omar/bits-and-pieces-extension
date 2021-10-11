@@ -1,10 +1,9 @@
 {
   "manifest_version": 2,
   "name": "BITS Compendium",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "author": "Aviral Omar",
-  "default_locale": "en",
-  "description": "A browser extension to make life easier and save a few clicks throughout your day while trying to access online classes and important BITS Pilani University Websites.",
+  "description": "A browser extension that saves a few clicks while accessing online classes and important BITS Pilani University Websites.",
   "icons": {
 	"32": "icons/bc-32.png",
     "48": "icons/bc-48.png",
@@ -14,11 +13,8 @@
 	  "https://academic.bits-pilani.ac.in/*",
 	  "https://nalanda-aws.bits-pilani.ac.in/*",
 	  "https://timetable.bits-dvm.org/renderer.html",
-	  "activeTab",
 	  "storage",
-	  "tabs",
-	  "webNavigation",
-	  "webRequest"
+	  "webNavigation"
   ],
   "background": {"scripts": ["/background_scripts/ttgen.js"]},
   "browser_action": {

@@ -294,26 +294,31 @@ const contactData = [
       },
     ],
   },
-  // {
-  // 	title: 'Vyas Bhawan',
-  // 	contacts: [
-  // 		{
-  // 			position: 'Chowki',
-  // 			name: '-',
-  // 			number: '-',
-  // 		},
-  // 		{
-  // 			position: 'Superintendent',
-  // 			name: '-',
-  // 			number: '-',
-  // 		},
-  // 		{
-  // 			position: 'Warden',
-  // 			name: '-',
-  // 			number: '-',
-  // 		},
-  // 	],
-  // },
+  {
+    title: "Vyas Bhawan",
+    contacts: [
+      {
+        position: "Chowki",
+        name: "Mr. Moti Singh",
+        number: "7726992906",
+      },
+      {
+        position: "Chowki",
+        name: "Mr. Vikram Singh (Reliever)",
+        number: "8769640715",
+      },
+      {
+        position: "Superintendent",
+        name: "Mr. Rajendra Bhatt",
+        number: "7568998155",
+      },
+      // {
+      // 	position: 'Warden',
+      // 	name: '-',
+      // 	number: '-',
+      // },
+    ],
+  },
   {
     title: "Malviya-A Bhawan",
     contacts: [
@@ -321,6 +326,26 @@ const contactData = [
         position: "Chowki",
         name: "Mr. Babulal",
         number: "9928327924",
+      },
+      {
+        position: "Superintendent",
+        name: "Mr. Rohitaswa Rathore",
+        number: "9694096465",
+      },
+      {
+        position: "Warden",
+        name: "Dr. Trilok Mathur",
+        number: "9694096460",
+      },
+    ],
+  },
+  {
+    title: "Malviya-B Bhawan",
+    contacts: [
+      {
+        position: "Chowki",
+        name: "Mr. Maman Singh",
+        number: "9887120848",
       },
       {
         position: "Superintendent",
