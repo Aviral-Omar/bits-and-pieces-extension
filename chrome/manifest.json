@@ -22,10 +22,5 @@
     "default_icon": "icons/bc-32.png",
     "default_title": "BITS Compendium",
     "default_popup": "index.html"
-  },
-"browser_specific_settings": {
-  "gecko": {
-    "id": "{d0e2741d-a522-45cf-bccd-23f6069856b5}"
   }
-}
 }

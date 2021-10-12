@@ -33,10 +33,10 @@ const TimeTable = () => {
 		setLD(ld);
 		try {
 			//FF
-			await browser.storage.local.set({ linkData });
+			await browser.storage.sync.set({ linkData });
 		} catch {
 			//Chrome
-			await chrome.storage.local.set({ linkData });
+			await chrome.storage.sync.set({ linkData });
 		}
 	};
 
@@ -46,10 +46,10 @@ const TimeTable = () => {
 		setLD(ld);
 		try {
 			//FF
-			await browser.storage.local.set({ linkData });
+			await browser.storage.sync.set({ linkData });
 		} catch {
 			//Chrome
-			await chrome.storage.local.set({ linkData });
+			await chrome.storage.sync.set({ linkData });
 		}
 	};
 
@@ -110,12 +110,12 @@ const TimeTable = () => {
 		const getTT = async () => {
 			try {
 				//Firefox
-				const temp = await browser.storage.local.get(['tt', 'linkData']);
+				const temp = await browser.storage.sync.get(['tt', 'linkData']);
 				setTT(JSON.stringify(temp) === '{}' ? {} : temp.tt);
 				setLD(JSON.stringify(temp) === '{}' ? [] : temp.linkData);
 			} catch {
 				// Chrome
-				await chrome.storage.local.get(['tt', 'linkData'], temp => {
+				await chrome.storage.sync.get(['tt', 'linkData'], temp => {
 					setTT(JSON.stringify(temp) === '{}' ? {} : temp.tt);
 					setLD(JSON.stringify(temp) === '{}' ? [] : temp.linkData);
 				});

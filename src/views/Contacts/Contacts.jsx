@@ -1,13 +1,32 @@
-import React from 'react';
-import { Grid } from '@mui/material';
+/*global browser, chrome */
+import React, { useState, useEffect } from 'react';
+import { Grid, Box } from '@mui/material';
 
-import contactData from './contactData';
 import GroupCard from './GroupCard';
 
 const Contacts = () => {
+	const [contactData, setData] = useState([]);
+
+	useEffect(() => {
+		const changeData = async () => {
+			try {
+				const temp = await browser.storage.sync.get(['contactData']);
+				setData(JSON.stringify(temp) === '{}' ? [] : temp.contactData);
+			} catch {
+				await chrome.storage.sync.get(['contactData'], temp => {
+					setData(JSON.stringify(temp) === '{}' ? [] : temp.contactData);
+				});
+			}
+		};
+		changeData();
+	}, []);
+
+	const jsonData = JSON.stringify(contactData);
 	//Height 16 px less than container
 
-	return (
+	return jsonData === '[]' ? (
+		<Box />
+	) : (
 		<Grid
 			container
 			sx={{

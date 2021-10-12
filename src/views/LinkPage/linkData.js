@@ -1,58 +1,5 @@
 /* global browser, chrome*/
 //TODO Add links
-const getLink = (name) => {
-  switch (name) {
-    case "AUGSD":
-      return "https://academic.bits-pilani.ac.in/Student_Login.aspx";
-    case "Nalanda":
-      return "https://nalanda-aws.bits-pilani.ac.in/my/";
-    case "ERP":
-      return "https://sis.erp.bits-pilani.ac.in/psc/sisprd/EMPLOYEE/SA/c/NUI_FRAMEWORK.PT_LANDINGPAGE.GBL";
-    case "Notice Board":
-      return "https://onboard.bits-pilani.ac.in/ucp.php?mode=login&login=external&oauth_service=google";
-    case "SWD":
-      return "http://swd.bits-pilani.ac.in/Login.aspx";
-    case "Library":
-      return "http://library.bits-pilani.ac.in/login.php";
-    case "PSD":
-      return "http://psd.bits-pilani.ac.in/Login.aspx";
-    case "IPC":
-      return "https://www.bits-pilani.ac.in/pilani/ipc/Services";
-    case "SU":
-      return "https://su-bitspilani.org/index.html";
-    case "Sports Union":
-      return "https://bits-sports.org/landing.html";
-    case "SAC":
-      return "https://sacbitspilani.wordpress.com/";
-    case "EC":
-      return "https://bitselections.wordpress.com/";
-    case "EPC":
-      return "https://epcbits.com/";
-    case "HPC":
-      return "https://hindipressclub.wordpress.com/";
-    case "The BITS Review":
-      return "https://thebitsreview.org/";
-    case "WiFi Login":
-      return "https://fw.bits-pilani.ac.in:8090/httpclient.html";
-    case "Time Table Generator":
-      return "https://timetable.bits-dvm.org/pilani.html";
-    case "StudyDeck":
-      return "https://studydeck.bits-sutechteam.org/";
-    case "BITS Map":
-      return "https://map.epcbits.com/";
-    case "Handouts":
-      return "https://sacbitspilani.wordpress.com/resources/";
-    case "Google Meet":
-      return "https://meet.google.com/";
-    case "Google Calendar":
-      return "https://calendar.google.com/";
-    case "Google Classroom":
-      return "https://classroom.google.com/";
-    case "Canvas":
-      return "https://canvas.instructure.com/login/google";
-  }
-};
-
 const getScript = (name) => {
   switch (name) {
     case "AUGSD":
@@ -145,64 +92,30 @@ const automate = async (tabId, name) => {
   }
 };
 
-const createTab = async (name) => {
+const createTab = async (link) => {
   try {
     //FF
     const tab = await browser.tabs.create({
-      url: getLink(name),
-      active: makeActive(name),
+      url: link.url,
+      active: makeActive(link.name),
     });
-    automate(tab.id, name);
+    automate(tab.id, link.name);
   } catch {
     //Chrome
     chrome.tabs.create(
       {
-        url: getLink(name),
-        active: makeActive(name),
+        url: link.url,
+        active: makeActive(link.name),
       },
       (tab) => {
-        automate(tab.id, name);
+        automate(tab.id, link.name);
       }
     );
   }
 };
 
-const handleLink = async (name) => {
-  createTab(name);
+const handleLink = async (link) => {
+  createTab(link);
 };
 
-const linkData = [
-  {
-    title: "Institute Links",
-    links: [
-      "AUGSD",
-      "Nalanda",
-      "ERP",
-      "Notice Board",
-      "SWD",
-      "Library",
-      "PSD",
-      "IPC",
-    ],
-  },
-  {
-    title: "Unions, Clubs & Departments",
-    links: ["SU", "Sports Union", "SAC", "EC", "EPC", "HPC", "The BITS Review"],
-  },
-  {
-    title: "Utility",
-    links: [
-      "WiFi Login",
-      "Time Table Generator",
-      "StudyDeck",
-      "BITS Map",
-      "Handouts",
-    ],
-  },
-  {
-    title: "Classes & Evaluation",
-    links: ["Google Meet", "Google Calendar", "Google Classroom", "Canvas"],
-  },
-];
-
-export { handleLink, linkData };
+export { handleLink };

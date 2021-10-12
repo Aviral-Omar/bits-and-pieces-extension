@@ -29,7 +29,7 @@ try {
           };
         }
       }
-      browser.storage.local.set({ ...message, linkData: ld });
+      browser.storage.sync.set({ ...message, linkData: ld });
     }
   });
 } catch {
@@ -49,7 +49,7 @@ try {
           };
         }
       }
-      chrome.storage.local.set({ ...message, linkData: ld });
+      chrome.storage.sync.set({ ...message, linkData: ld });
     }
   });
 }

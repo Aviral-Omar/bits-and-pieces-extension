@@ -1,11 +1,11 @@
 {
   "manifest_version": 2,
   "name": "BITS Compendium",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "author": "Aviral Omar",
   "description": "A browser extension that saves a few clicks while accessing online classes and important BITS Pilani University Websites.",
   "icons": {
-    "32": "icons/bc-32.png",
+	"32": "icons/bc-32.png",
     "48": "icons/bc-48.png",
 	"128": "icons/bc-128.png"
   },
@@ -14,13 +14,18 @@
 	  "https://nalanda-aws.bits-pilani.ac.in/*",
 	  "https://timetable.bits-dvm.org/renderer.html",
 	  "storage",
-	  "webNavigation"
+	  "webNavigation",
+	  "alarms"
   ],
-  "background": {"scripts": ["/background_scripts/ttgen.js"]},
-  "update_URL": "https://edge.microsoft.com/extensionwebstorebase/v1/crx",
+  "background": {"scripts": ["/background_scripts/refresh_data.js", "/background_scripts/ttgen.js"]},
   "browser_action": {
     "default_icon": "icons/bc-32.png",
     "default_title": "BITS Compendium",
     "default_popup": "index.html"
+  },
+"browser_specific_settings": {
+  "gecko": {
+    "id": "{d0e2741d-a522-45cf-bccd-23f6069856b5}"
   }
+}
 }

@@ -1,5 +1,11 @@
 # BITS Compendium Browser Extension
 
+Helps you create and store your time table and add class links to it for quick access. Saves you
+several clicks while trying to access important BITS Pilani official websites like AUGSD and Nalanda
+by automating the login process. Provides a repository of several important websites of the various
+clubs and departments. Also provides a repository of the important contacts in and around the
+campus.
+
 Built and tested in Pop!\_OS 21.04 using npm 7.21.1.\
 
 ## Build Yourself
