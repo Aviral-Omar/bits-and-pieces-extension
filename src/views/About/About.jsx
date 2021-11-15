@@ -25,10 +25,10 @@ const About = () => (
 			f20190411@pilani.bits-pilani.ac.in
 		</Typography>
 		<Stack spacing={2} direction="row">
-			<IconButton href="https://github.com/Aviral-Omar/">
+			<IconButton href="https://www.linkedin.com/in/aviral-omar-881244197/">
 				<LinkedIn />
 			</IconButton>
-			<IconButton href="https://www.linkedin.com/in/aviral-omar-881244197/">
+			<IconButton href="https://github.com/Aviral-Omar/">
 				<GitHub />
 			</IconButton>
 		</Stack>

@@ -11,7 +11,6 @@ const refreshData = async () => {
   try {
     browser.storage.sync.set({ contactData, links });
   } catch (e) {
-    console.log(e);
     chrome.storage.sync.set({ contactData, links });
   }
 };

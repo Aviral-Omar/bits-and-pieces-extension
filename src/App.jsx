@@ -7,9 +7,10 @@ import LinkPage from './views/LinkPage/LinkPage';
 import TimeTable from './views/TT/TT';
 import About from './views/About/About';
 import Contacts from './views/Contacts/Contacts';
+import WifiLogin from './views/WifiLogin/WifiLogin';
 
 const App = () => {
-	const [currentView, setView] = useState('tt');
+	const [currentView, setView] = useState('wifi');
 
 	return (
 		<div className="App">
@@ -24,7 +25,9 @@ const App = () => {
 						boxSizing: 'border-box',
 					}}
 				>
-					{currentView === 'links' ? (
+					{currentView === 'wifi' ? (
+						<WifiLogin />
+					) : currentView === 'links' ? (
 						<LinkPage />
 					) : currentView == 'tt' ? (
 						<TimeTable />

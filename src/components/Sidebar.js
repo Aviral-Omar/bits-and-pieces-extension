@@ -1,6 +1,6 @@
 import React from "react";
 import { Drawer, ButtonGroup, IconButton, Tooltip } from "@mui/material";
-import { Event, Link, Contacts, Info } from "@mui/icons-material";
+import { Wifi, Event, Link, Contacts, Info } from "@mui/icons-material";
 import PropTypes from "prop-types";
 
 const Sidebar = (props) => {
@@ -21,14 +21,19 @@ const Sidebar = (props) => {
       }}
     >
       <ButtonGroup orientation="vertical" size="large">
-        <Tooltip title="Time Table" arrow placement="right">
-          <IconButton onMouseEnter={() => setView("tt")}>
-            <Event />
+        <Tooltip title="Wifi Login" arrow placement="right">
+          <IconButton onMouseEnter={() => setView("wifi")}>
+            <Wifi />
           </IconButton>
         </Tooltip>
         <Tooltip title="Useful Links" arrow placement="right">
           <IconButton onMouseEnter={() => setView("links")}>
             <Link />
+          </IconButton>
+        </Tooltip>
+        <Tooltip title="Time Table" arrow placement="right">
+          <IconButton onMouseEnter={() => setView("tt")}>
+            <Event />
           </IconButton>
         </Tooltip>
         <Tooltip title="Contacts" arrow placement="right">

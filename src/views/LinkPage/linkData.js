@@ -1,5 +1,4 @@
 /* global browser, chrome*/
-//TODO Add links
 const getScript = (name) => {
   switch (name) {
     case "AUGSD":
@@ -8,6 +7,8 @@ const getScript = (name) => {
       return "nalanda";
     case "Time Table Generator":
       return "ttgen";
+    case "Wifi Login":
+      return "login_wifi";
   }
 };
 
@@ -17,14 +18,47 @@ const makeActive = (name) => {
       return false;
     case "Nalanda":
       return false;
+    case "Wifi Login":
+      return false;
     default:
       return true;
   }
 };
 
-const automate = async (tabId, name) => {
+const automate = async (tabId, name, credentials) => {
   try {
     //FF
+    browser.webNavigation.onCompleted.addListener(
+      async () => {
+        try {
+          await browser.tabs.executeScript(tabId, {
+            file: `/content_scripts/${getScript(name)}.js`,
+          });
+
+          browser.webRequest.onCompleted.addListener(
+            () => {
+              browser.tabs.remove(tabId);
+            },
+            {
+              urls: ["https://fw.bits-pilani.ac.in:8090/login.xml"],
+              tabId,
+            }
+          );
+
+          browser.tabs.sendMessage(tabId, credentials);
+        } catch (error) {
+          console.error(error);
+        }
+      },
+      {
+        url: [
+          {
+            urlMatches: "https://fw.bits-pilani.ac.in:8090/httpclient.html",
+          },
+        ],
+      }
+    );
+
     browser.webNavigation.onDOMContentLoaded.addListener(
       async () => {
         try {
@@ -35,6 +69,7 @@ const automate = async (tabId, name) => {
           if (name !== "AUGSD") {
             browser.tabs.update(tabId, { active: true });
           }
+
           window.close();
         } catch (error) {
           console.error(error);
@@ -59,6 +94,40 @@ const automate = async (tabId, name) => {
       { url: [{ urlContains: "https://nalanda-aws.bits-pilani.ac.in/my" }] }
     );
   } catch {
+    chrome.webNavigation.onCompleted.addListener(
+      async () => {
+        try {
+          chrome.tabs.executeScript(
+            tabId,
+            {
+              file: `/content_scripts/${getScript(name)}.js`,
+            },
+            () => {
+              chrome.webRequest.onCompleted.addListener(
+                () => {
+                  chrome.tabs.remove(tabId);
+                },
+                {
+                  urls: ["https://fw.bits-pilani.ac.in:8090/login.xml"],
+                  tabId,
+                }
+              );
+
+              chrome.tabs.sendMessage(tabId, credentials);
+            }
+          );
+        } catch (error) {
+          console.error(error);
+        }
+      },
+      {
+        url: [
+          {
+            urlMatches: "https://fw.bits-pilani.ac.in:8090/httpclient.html",
+          },
+        ],
+      }
+    );
     chrome.webNavigation.onDOMContentLoaded.addListener(
       async () => {
         try {
@@ -92,30 +161,30 @@ const automate = async (tabId, name) => {
   }
 };
 
-const createTab = async (link) => {
+const createTab = async (link, credentials) => {
   try {
     //FF
     const tab = await browser.tabs.create({
       url: link.url,
       active: makeActive(link.name),
     });
-    automate(tab.id, link.name);
+    await automate(tab.id, link.name, credentials);
   } catch {
     //Chrome
-    chrome.tabs.create(
+    await chrome.tabs.create(
       {
         url: link.url,
         active: makeActive(link.name),
       },
       (tab) => {
-        automate(tab.id, link.name);
+        automate(tab.id, link.name, credentials);
       }
     );
   }
 };
 
-const handleLink = async (link) => {
-  createTab(link);
+const handleLink = async (link, credentials) => {
+  createTab(link, credentials);
 };
 
-export { handleLink };
+export default handleLink;
