@@ -2,7 +2,7 @@
 
 const usernameField = document.getElementById("username");
 const passwordField = document.getElementById("password");
-const loginLink = document.getElementById("loginbutton").parentElement;
+const loginLink = document.getElementById("loginbutton");
 
 const login = (credentials) => {
   usernameField.value = credentials.username;
@@ -14,7 +14,7 @@ try {
   browser.runtime.onMessage.addListener((credentials) => {
     login(credentials);
   });
-} catch {
+} catch (e) {
   chrome.runtime.onMessage.addListener((credentials) => {
     login(credentials);
   });

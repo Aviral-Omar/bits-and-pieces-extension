@@ -28,19 +28,19 @@ const makeActive = (name) => {
 const automate = async (tabId, name, credentials) => {
   try {
     //FF
+    // Browser namespace implementation not working properly
     browser.webNavigation.onCompleted.addListener(
       async () => {
         try {
           await browser.tabs.executeScript(tabId, {
             file: `/content_scripts/${getScript(name)}.js`,
           });
-
           browser.webRequest.onCompleted.addListener(
             () => {
               browser.tabs.remove(tabId);
             },
             {
-              urls: ["https://fw.bits-pilani.ac.in:8090/login.xml"],
+              urls: ["https://fw.bits-pilani.ac.in/login.xml"],
               tabId,
             }
           );
