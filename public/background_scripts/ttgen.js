@@ -13,7 +13,7 @@ const listener = async () => {
 };
 
 try {
-  browser.webNavigation.onDOMContentLoaded.addListener(listener, {
+  browser.webNavigation.onCompleted.addListener(listener, {
     url: [{ urlMatches: "https://timetable.bits-dvm.org/renderer.html" }],
   });
 
@@ -33,7 +33,7 @@ try {
     }
   });
 } catch {
-  chrome.webNavigation.onDOMContentLoaded.addListener(listener, {
+  chrome.webNavigation.onCompleted.addListener(listener, {
     url: [{ urlMatches: "https://timetable.bits-dvm.org/renderer.html" }],
   });
 

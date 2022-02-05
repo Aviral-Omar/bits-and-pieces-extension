@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "BITS Compendium",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "author": "Aviral Omar",
   "description": "A browser extension that saves a few clicks while accessing online classes and important BITS Pilani University Websites.",
   "icons": {
@@ -28,6 +28,6 @@
   "browser_specific_settings": {
     "gecko": {
       "id": "{8e7d0d19-3be4-4812-9087-16c9bfc722ea}"
+    }
   }
-}
 }
