@@ -62,13 +62,11 @@ const automate = async (tabId, name, credentials) => {
     browser.webNavigation.onDOMContentLoaded.addListener(
       async () => {
         try {
+          browser.tabs.update(tabId, { active: true });
           await browser.tabs.executeScript(tabId, {
             file: `/content_scripts/${getScript(name)}.js`,
           });
           //Sign in page becomes active for AUGSD
-          if (name !== "AUGSD") {
-            browser.tabs.update(tabId, { active: true });
-          }
 
           window.close();
         } catch (error) {
@@ -187,4 +185,4 @@ const handleLink = async (link, credentials) => {
   createTab(link, credentials);
 };
 
-export default handleLink;
+export { handleLink };

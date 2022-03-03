@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Grid, Button, Box, Typography, Divider } from '@mui/material';
 
-import handleLink from './linkData';
+import { handleLink } from './linkData';
 
 const LinkPage = () => {
 	//TODO close popup on click

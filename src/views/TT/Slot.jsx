@@ -27,22 +27,69 @@ const Slot = props => {
 	const open = Boolean(anchorEl);
 	const id = open ? 'popover' : undefined;
 
+	const linkHandler = tabId => {
+		try {
+			browser.webNavigation.onCompleted.addListener(
+				async () => {
+					try {
+						await browser.tabs.executeScript(tabId, {
+							file: `/content_scripts/meet.js`,
+						});
+						browser.tabs.update(tabId, { active: true });
+					} catch (error) {
+						console.error(error);
+					}
+				},
+				{
+					url: [{ urlContains: 'https://meet.google.com' }],
+				},
+			);
+		} catch {
+			chrome.webNavigation.onCompleted.addListener(
+				async () => {
+					try {
+						chrome.tabs.executeScript(tabId, {
+							file: `/content_scripts/meet.js`,
+						});
+						chrome.tabs.update(tabId, { active: true });
+					} catch (error) {
+						console.error(error);
+					}
+				},
+				{
+					url: [{ urlContains: 'https://meet.google.com' }],
+				},
+			);
+		}
+	};
+
 	const createTab = async () => {
+		let tab;
 		if (link?.url) {
 			try {
-				await browser.tabs.create({
+				tab = await browser.tabs.create({
 					url:
 						link.platform === 'gmeet'
 							? `https://meet.google.com/${link.url}`
 							: link.url,
+					active: false,
 				});
+				if (link.platform === 'gmeet') linkHandler(tab.id);
 			} catch {
-				await chrome.tabs.create({
-					url:
-						link.platform === 'gmeet'
-							? `https://meet.google.com/${link.url}`
-							: link.url,
-				});
+				await chrome.tabs.create(
+					{
+						url:
+							link.platform === 'gmeet'
+								? `https://meet.google.com/${link.url}`
+								: link.url,
+						active: false,
+					},
+					tab => {
+						if (link.platform === 'gmeet') {
+							linkHandler(tab.id);
+						}
+					},
+				);
 			}
 		}
 	};

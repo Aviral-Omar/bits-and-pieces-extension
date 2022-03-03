@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { Stack, TextField, Button } from '@mui/material';
 
-import handleLink from '../LinkPage/linkData';
+import { handleLink } from '../LinkPage/linkData';
 
 const WifiLogin = () => {
 	const [credentials, setCredentials] = useState({ username: '', password: '' });
