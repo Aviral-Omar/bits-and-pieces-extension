@@ -25,3 +25,6 @@ yarn-error.log*
 /edge/bits_compendium*
 /firefox/bits_compendium*
 /chrome/bits_compendium*
+/edge/bits-compendium*
+/firefox/bits-compendium*
+/chrome/bits-compendium*
