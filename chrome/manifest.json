@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "BITS Compendium",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "author": "Aviral Omar",
   "description": "A browser extension that saves a few clicks while accessing online classes and important BITS Pilani University Websites.",
   "icons": {
