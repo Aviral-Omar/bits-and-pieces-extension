@@ -6,6 +6,10 @@ by automating the login process. Provides a repository of several important webs
 clubs and departments. Also provides a repository of the important contacts in and around the
 campus.
 
+[Firefox Addons](https://addons.mozilla.org/en-US/firefox/addon/bits-compendium/)\
+[Chrome Web Store](https://chrome.google.com/webstore/detail/bits-compendium/fnccleepaflpbgpokpbnjfokjemjpack?hl=en-GB)\
+[Edge Store](https://microsoftedge.microsoft.com/addons/detail/bits-compendium/kpigjlohafobfhempghbcneadpnjgfob)
+
 Built and tested in Pop!\_OS 21.04 using npm 7.21.1.\
 
 ## Build Yourself
