@@ -22,6 +22,7 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+/.eslintcache
 /edge/bits_compendium*
 /firefox/bits_compendium*
 /chrome/bits_compendium*
