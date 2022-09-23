@@ -2,12 +2,12 @@
 
 const usernameField = document.getElementById("username");
 const passwordField = document.getElementById("password");
-const loginLink = document.getElementById("loginbutton");
+const loginButton = document.getElementById("loginbtn");
 
 const login = (credentials) => {
   usernameField.value = credentials.username;
   passwordField.value = credentials.password;
-  loginLink.click();
+  loginButton.click();
 };
 
 try {
